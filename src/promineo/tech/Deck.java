@@ -23,7 +23,7 @@ public class Deck {
      * The deck consists of four suits: Clubs, Diamonds, Hearts, and Spades.
      * Each suit has 13 ranks: Ace, Two, Three, Four, Five, Six, Seven, Eight, Nine,
      * Ten, Jack, Queen, and King, each associated with a numerical value starting from 2.
-     *
+     *<p>
      * The cards are stored in an ArrayList, where each card is represented by a Card object.
      */
     public Deck() {
@@ -42,6 +42,17 @@ public class Deck {
         }
     }
 
+    /**
+     * Shuffles the deck of cards using a deterministic approach.
+     *<p>
+     * This method increments the internal `seed` value and uses it to initialize
+     * a new instance of the Random class. The shuffle is performed manually by
+     * iterating over the list of cards and swapping the position of each card
+     * with a randomly chosen card in the deck.
+     *<p>
+     * Ensures that a card already shuffled can be shuffled again by the
+     * random int being able to include previous indexes.
+     */
     public void shuffle() {
 //        Collections.shuffle(cards); // Removed for proof of understanding
 
@@ -60,6 +71,11 @@ public class Deck {
         }
     }
 
+    /**
+     * Draws the top card from the deck and removes it.
+     *
+     * @return the card that was removed from the top of the deck
+     */
     public Card draw() {
 //        remove and return the first card in the deck
         return cards.removeFirst();
