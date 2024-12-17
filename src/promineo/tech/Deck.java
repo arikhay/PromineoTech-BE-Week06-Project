@@ -90,7 +90,13 @@ public class Deck {
         return this.cards.removeFirst();
     }
 
-
+    /**
+     * Retrieves a list representing the current state of the deck.
+     * This method provides a copy of the deck's card list, ensuring
+     * the original list remains unaffected.
+     *
+     * @return a list of {@code Card} objects representing the deck
+     */
     public List<Card> getDeck() {
         List<Card> displayDeck = new ArrayList<>();
         Collections.copy(displayDeck, this.cards);
