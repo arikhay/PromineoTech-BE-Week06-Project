@@ -2,6 +2,7 @@ package promineo.tech;
 
 // imports from Java
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 import java.util.Random;
 
@@ -88,4 +89,12 @@ public class Deck {
 //        remove and return the first card in the deck
         return this.cards.removeFirst();
     }
+
+
+    public List<Card> getDeck() {
+        List<Card> displayDeck = new ArrayList<>();
+        Collections.copy(displayDeck, this.cards);
+        return displayDeck;
+    }
+
 }
