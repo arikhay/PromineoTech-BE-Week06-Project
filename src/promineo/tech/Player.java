@@ -95,4 +95,13 @@ public class Player {
     public void incrementScore() {
         this.score++;
     }
+
+    /**
+     * Retrieves the current score of the player.
+     *
+     * @return the current score of the player as an integer
+     */
+    public int getScore() {
+        return this.score;
+    }
 }
