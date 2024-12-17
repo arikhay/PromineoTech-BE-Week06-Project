@@ -72,6 +72,15 @@ public class Player {
     }
 
     /**
+     * Adds the specified card to the player's hand.
+     *
+     * @param card the card to be added to the hand
+     */
+    public void addToHand(Card card) {
+        hand.add(card);
+    }
+
+    /**
      * Increases the player's score by 1.
      */
     public void incrementScore() {
