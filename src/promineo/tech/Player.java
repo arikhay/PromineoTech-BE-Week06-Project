@@ -15,7 +15,7 @@ public class Player {
                                     // the reference to the object stays the same. Not necessarily that the
                                     // contents of the object stay the same, as with Collection objects.
     private int score;
-    private final String name;
+    private String name;
 
     /**
      * Constructs a Player object with the specified name.
