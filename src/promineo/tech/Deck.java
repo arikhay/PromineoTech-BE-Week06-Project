@@ -1,9 +1,11 @@
 package promineo.tech;
 
-// imports from Java framework
+// imports from Java
 import java.util.ArrayList;
-import java.util.Collections;
+import java.util.List;
 import java.util.Random;
+
+import static java.lang.System.exit;
 
 /**
  * The Deck class represents a collection of cards in a standard deck.
@@ -16,7 +18,7 @@ public class Deck {
     private long seed = 325;
 
 //    instantiate the deck of cards
-    private ArrayList<Card> cards;
+    private final List<Card> cards;
 
     /**
      * Constructs a Deck object and initializes it with a standard set of 52 playing cards.
@@ -28,7 +30,7 @@ public class Deck {
      */
     public Deck() {
 //        declare the ArrayList
-        cards = new ArrayList<>();
+        this.cards = new ArrayList<>();
 
         //    array of suits
         String[] suits = {"Clubs", "Diamonds", "Hearts", "Spades"};
@@ -37,7 +39,7 @@ public class Deck {
             String[] ranks = {"Two", "Three", "Four", "Five",
                     "Six", "Seven", "Eight", "Nine", "Ten", "Jack", "Queen", "King", "Ace"};
             for (int j = 0; j < ranks.length; j++) {
-                cards.add(new Card(j + 2, suit + " of " + ranks[j]));
+                this.cards.add(new Card(j + 2, suit + " of " + ranks[j]));
             }
         }
     }
@@ -63,11 +65,17 @@ public class Deck {
         Random rand = new Random(seed);
 
 //        shuffle with a for loop
-        for (int index = 0 ; index < cards.size() ; index++) {
-            Card tmp = cards.get(index);
-            int replacementInd = rand.nextInt(cards.size() - 1);
-            cards.set(index, cards.get(replacementInd));
-            cards.set(replacementInd, tmp);
+        for (int index = 0 ; index < this.cards.size() ; index++) {
+                Card tmp = this.cards.get(index);
+                int replacementInd = rand.nextInt(this.cards.size() - 1);
+            try {
+                this.cards.set(index, cards.get(replacementInd));
+                this.cards.set(replacementInd, tmp);
+            } catch (IndexOutOfBoundsException e) { // to be safe, including this catch for unforeseen error handling with the random call
+                System.err.println("[ERROR] Random hit index out of bounds: " + replacementInd +
+                        "\nPrinting error stream and hard exiting:\n" + e);
+                exit(1);
+            }
         }
     }
 
@@ -78,6 +86,6 @@ public class Deck {
      */
     public Card draw() {
 //        remove and return the first card in the deck
-        return cards.removeFirst();
+        return this.cards.removeFirst();
     }
 }
