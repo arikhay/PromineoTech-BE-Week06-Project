@@ -30,6 +30,24 @@ public class Player {
     }
 
     /**
+     * Retrieves the name of the Player.
+     *
+     * @return the name of the Player as a String
+     */
+    public String getName() {
+        return this.name;
+    }
+
+    /**
+     * Sets the name of the player.
+     *
+     * @param name the name to assign to the player
+     */
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    /**
      * Prints a description of the player and their hand to the standard output.
      * The description includes the player's name and score, followed by a visual separator
      * and details of each card in the player's hand. Each card's details are displayed
