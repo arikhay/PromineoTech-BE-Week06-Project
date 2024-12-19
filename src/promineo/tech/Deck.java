@@ -15,8 +15,6 @@ import static java.lang.System.exit;
  */
 public class Deck {
 
-    //    global variable for seeding the Random class
-    private long seed = 325;
 
 //    instantiate the deck of cards
     private final List<Card> cards;
@@ -40,7 +38,7 @@ public class Deck {
             String[] ranks = {"Two", "Three", "Four", "Five",
                     "Six", "Seven", "Eight", "Nine", "Ten", "Jack", "Queen", "King", "Ace"};
             for (int j = 0; j < ranks.length; j++) {
-                this.cards.add(new Card(j + 2, suit + " of " + ranks[j]));
+                this.cards.add(new Card(j + 2, ranks[j] + " of " + suit));
             }
         }
     }
@@ -57,13 +55,16 @@ public class Deck {
      * random int being able to include previous indexes.
      */
     public void shuffle() {
-//        Collections.shuffle(cards); // Removed for proof of understanding
+        Collections.shuffle(cards);
 
-//        increment seed
-        seed += 274;
+        /*
+//        generate random variable
+        Random rand = new Random();
 
-//        generate random variable with new seed
-        Random rand = new Random(seed);
+
+
+//      Commented out and Collections.shuffle() used because the below shuffle loop
+//        highly favors player 1. Might be explored and considered later.
 
 //        shuffle with a for loop
         for (int index = 0 ; index < this.cards.size() ; index++) {
@@ -78,6 +79,7 @@ public class Deck {
                 exit(1);
             }
         }
+        random.close();*/
     }
 
     /**
